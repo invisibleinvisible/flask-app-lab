@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<header class="page-header text-center mb-5">
+    <h1 class="display-5 fw-bold">Контакти</h1>
+    <p class="lead">
+        Буду радий відповісти на твої запитання.
+    </p>
+</header>
+
+<div class="row g-4">
+    <section class="col-lg-5">
+        <div class="contact-card h-100">
+            <h2>Зв'язатися зі мною</h2>
+
+            <p>
+                <strong>Email:</strong>
+                <a href="mailto:example@gmail.com">
+                    example@mail.com
+                </a>
+            </p>
+
+            <p>
+                <strong>Телефон:</strong>
+                <a href="tel:+380123456789">
+                    0123456789
+                </a>
+            </p>
+
+             <p>
+                <strong>Місто:</strong> Івано-Франківськ
+            </p>
+
+            <p>
+                <strong>GitHub:</strong>
+                <a href="https://github.com/" target="_blank"
+                   rel="noopener noreferrer">
+                    Мій профіль GitHub
+                </a>
+            </p>
+
+        </div>
+    </section>
+
+<section class="col-lg-7">
+        <div class="contact-card">
+            <h2>Написати повідомлення</h2>
+
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">
+                        Ваше ім'я
+                    </label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        name="name"
+                        placeholder="Введіть ім'я"
+                        required
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">
+                        Електронна пошта
+                    </label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        placeholder="name@example.com"
+                        required
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label for="message" class="form-label">
+                        Повідомлення
+                    </label>
+                    <textarea
+                        class="form-control"
+                        id="message"
+                        name="message"
+                        rows="5"
+                        placeholder="Ваше повідомлення..."
+                        required
+                    ></textarea>
+                </div>
+
+                <button type="button" class="btn btn-primary w-100"
+                        onclick="alert('Це демонстраційна форма. Повідомлення не надіслано.')">
+                    Надіслати
+                </button>
+            </form>
+
+            <p class="text-muted mt-3 mb-0 small">
+                Форма є демонстраційною і не надсилає дані.
+            </p>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

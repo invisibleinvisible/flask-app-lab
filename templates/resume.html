@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<header class="resume-header text-center mb-5">
+    <img
+        src="{{ url_for('static', filename='images/profile.jpg') }}"
+        alt="Моє фото"
+        class="profile-photo mb-3"
+    >
+    
+    <h1 class="display-5 fw-bold">Д і Б</h1>
+    <p class="lead">Студент</p>
+</header>
+
+<nav class="section-nav mb-5" aria-label="Навігація по резюме">
+    <ul class="nav nav-pills justify-content-center flex-wrap gap-2">
+
+        <li class="nav-item">
+            <a class="nav-link" href="#about">Про себе</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#education">Освіта</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#skills">Навички</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#technologies">Технології</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#experience">Досвід і проєкти</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="resume-content">
+
+    <section id="about" class="resume-section">
+        <h2>Про себе</h2>
+        <p>
+            ааааааааааааааааааааааа
+            ааааааааааа ааааааааааа
+            ааааааа ааааааааа аааааа
+            аааааааааа аааааааааааа
+        </p>
+    </section>
+
+    <section id="education" class="resume-section">
+        <h2>Освіта</h2>
+        <h3>XXX</h3>
+        <p>Спеціальність: Інженерія Програмного Забезпечення</p>
+        <p>Роки навчання: 2023 - 202X</p>
+    </section>
+
+    <section id="skills" class="resume-section">
+        <h2>Навички</h2>
+        <ul>
+            <li>Розв'язання алгоритмічних задач</li>
+            <li>Робота в команді</li>
+            <li>Пошук і виправлення помилок</li>
+            <li>Основи веброзробки</li>
+        </ul>
+    </section>
+
+    <section id="technologies" class="resume-section">
+        <h2>Технології</h2>
+        <div class="technology-list">
+            <span class="badge text-bg-primary">Python</span>
+            <span class="badge text-bg-primary">Flask</span>
+            <span class="badge text-bg-primary">HTML5</span>
+            <span class="badge text-bg-primary">CSS3</span>
+            <span class="badge text-bg-primary">Bootstrap</span>
+            <span class="badge text-bg-primary">Git</span>
+        </div>
+    </section>
+
+    <section id="experience" class="resume-section">
+        <h2>Досвід роботи та проєкти</h2>
+        <article class="project-card">
+            <h3>Навчальний вебсайт</h3>
+            <p>
+                Створення вебсайту за допомогою HTML і CSS
+                для практичного закріплення знань веброзробки.
+            </p>
+        </article>
+
+        <article class="project-card">
+            <h3>Flask-проєкт</h3>
+            <p>
+                Розробка сайту з маршрутизацією,
+                шаблонами Jinja2 та адаптивним дизайном.
+            </p>
+        </article>
+
+        <p>
+            Комерційний досвід роботи: поки що відсутній.
+        </p>
+    </section>
+
+
+
+</div>
+
+{% endblock %}
