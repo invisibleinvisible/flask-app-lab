@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<div class="resume-container">
 <header class="resume-header text-center mb-5">
     <img
         src="{{ url_for('static', filename='images/profile.jpg') }}"
         alt="Моє фото"
-        class="profile-photo mb-3"
+        class="profile-image"
     >
     
     <h1 class="display-5 fw-bold">Д і Б</h1>
@@ -105,5 +105,5 @@
 
 
 </div>
-
+</div>
 {% endblock %}
