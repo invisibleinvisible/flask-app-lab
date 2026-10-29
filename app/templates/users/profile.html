@@ -1,0 +1,109 @@
+
+{% extends "base.html" %}
+
+{% block title %}Профіль{% endblock %}
+
+{% block content %}
+<div class="container mt-4 {% if theme == 'dark' %}bg-dark text-white{% else %}bg-light text-dark{% endif %} p-4 rounded">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Ласкаво просимо, {{ username }}!</h2>
+        <a href="{{ url_for('users.logout') }}" class="btn btn-danger">
+            Вийти
+        </a>
+    </div>
+
+    <h4>Кольорова схема</h4>
+    <div class="mb-4">
+        <a href="{{ url_for('users.set_theme', theme_name='light') }}"
+           class="btn btn-outline-secondary">
+            Світла тема
+        </a>
+
+        <a href="{{ url_for('users.set_theme', theme_name='dark') }}"
+           class="btn btn-outline-primary">
+            Темна тема
+        </a>
+    </div>
+
+    <hr>
+
+    <h4>Додати cookie</h4>
+    <form method="POST" class="row g-3 mb-4">
+        <input type="hidden" name="action" value="add_cookie">
+
+        <div class="col-md-4">
+            <label for="cookie_key" class="form-label">Ключ</label>
+            <input id="cookie_key" name="cookie_key"
+                   class="form-control" required>
+        </div>
+
+        <div class="col-md-4">
+            <label for="cookie_value" class="form-label">Значення</label>
+            <input id="cookie_value" name="cookie_value"
+                   class="form-control" required>
+        </div>
+
+        <div class="col-md-3">
+            <label for="cookie_max_age" class="form-label">
+                Термін дії (секунди)
+            </label>
+            <input id="cookie_max_age" name="cookie_max_age"
+                   type="number" min="1" class="form-control">
+        </div>
+
+        <div class="col-md-1 d-flex align-items-end">
+            <button type="submit" class="btn btn-success">Додати</button>
+        </div>
+    </form>
+
+    <h4>Видалити cookie за ключем</h4>
+    <form method="POST" class="row g-3 mb-3">
+        <input type="hidden" name="action" value="delete_cookie">
+
+        <div class="col-md-8">
+            <input name="delete_key" class="form-control"
+                   placeholder="Ключ cookie" required>
+        </div>
+
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-warning">
+                Видалити cookie
+            </button>
+        </div>
+    </form>
+
+    <form method="POST" class="mb-4">
+        <input type="hidden" name="action" value="delete_all_cookies">
+        <button type="submit" class="btn btn-danger">
+            Видалити всі користувацькі cookies
+        </button>
+    </form>
+
+    <hr>
+
+    <h4>Поточні cookies</h4>
+    <div class="table-responsive">
+        <table class="table table-bordered {% if theme == 'dark' %}table-dark{% else %}table-striped{% endif %}">
+            <thead>
+                <tr>
+                    <th>Ключ</th>
+                    <th>Значення</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in cookies.items() %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="2">Користувацьких cookies немає.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
