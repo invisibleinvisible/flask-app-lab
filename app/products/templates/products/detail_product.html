@@ -1,16 +1,93 @@
+
 {% extends "base.html" %}
 
 {% block title %}{{ product.name }}{% endblock %}
 
 {% block content %}
-<h2>{{ product.name }}</h2>
 
-<p><strong>ID:</strong> {{ product.id }}</p>
-<p>{{ product.content }}</p>
-<p><strong>Ціна:</strong> ${{ product.price }}</p>
+<div class="container py-4">
 
-<a class="btn btn-secondary"
-   href="{{ url_for('products.products_list') }}">
+    <div class="card shadow-sm">
+
+        <div class="row g-0">
+
+            <div class="col-md-5">
+
+                {% if product.image %}
+                    <img
+                        src="{{ url_for('products.static', filename=product.image) }}"
+                        class="img-fluid rounded-start w-100"
+                        alt="{{ product.name }}"
+                        style="height: 100%; min-height: 300px; object-fit: cover;"
+                    >
+                {% else %}
+                    <div class="bg-light d-flex align-items-center justify-content-center"
+                         style="height: 300px;">
+                        <span class="text-muted">
+                            Зображення відсутнє
+                        </span>
+                    </div>
+                {% endif %}
+
+            </div>
+
+            <div class="col-md-7">
+
+                <div class="card-body p-4">
+
+                    <h2 class="card-title">
+                        {{ product.name }}
+                    </h2>
+
+                    <hr>
+
+                    <p>
+                        <strong>ID:</strong> {{ product.id }}
+                    </p>
+
+                    <p>
+                        <strong>Категорія:</strong>
+                        {{ product.category }}
+                    </p>
+
+                    <p>
+                        <strong>Опис:</strong>
+                    </p>
+
+                    <p>{{ product.content }}</p>
+
+                    <h4 class="text-primary">
+                        ${{ product.price }}
+                    </h4>
+
+                    <p>
+                        <strong>Кількість:</strong>
+                        {{ product.quantity }} шт.
+                    </p>
+
+                    <p>
+                        <strong>Дата створення:</strong>
+                        {{ product.created_at }}
+                    </p>
+
+                    <a href="{{ url_for('products.edit_product', id=product.id) }}"
+   class="btn btn-warning mt-3">
+    Редагувати товар
+</a>
+
+<a href="{{ url_for('products.products_list') }}"
+   class="btn btn-secondary mt-3">
     Назад до товарів
 </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 {% endblock %}

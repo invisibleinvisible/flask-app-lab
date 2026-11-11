@@ -1,0 +1,109 @@
+
+{% extends "base.html" %}
+
+{% block title %}Редагування товару{% endblock %}
+
+{% block content %}
+
+<div class="container py-4" style="max-width: 700px;">
+
+    <h2 class="mb-4">Редагування товару</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control") }}
+
+            {% for error in form.name.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.content.label(class="form-label") }}
+            {{ form.content(class="form-control", rows="5", cols="40") }}
+
+            {% for error in form.content.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.price.label(class="form-label") }}
+            {{ form.price(class="form-control", step="0.01") }}
+
+            {% for error in form.price.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.category.label(class="form-label") }}
+            {{ form.category(class="form-select") }}
+
+            {% for error in form.category.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.quantity.label(class="form-label") }}
+            {{ form.quantity(class="form-control") }}
+
+            {% for error in form.quantity.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Поточне зображення
+            </label>
+
+            {% if product.image %}
+                <div class="mb-3">
+                    <img
+                        src="{{ url_for('products.static', filename=product.image) }}"
+                        alt="{{ product.name }}"
+                        style="max-width: 200px; max-height: 200px; object-fit: cover;"
+                        class="img-thumbnail"
+                    >
+                </div>
+            {% else %}
+                <p class="text-muted">
+                    Зображення відсутнє.
+                </p>
+            {% endif %}
+
+            {{ form.image.label(class="form-label") }}
+            {{ form.image(class="form-control") }}
+
+            <small class="text-muted">
+                Якщо не вибирати нове зображення,
+                попереднє залишиться.
+            </small>
+
+            {% for error in form.image.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">
+            Зберегти зміни
+        </button>
+
+        <a href="{{ url_for('products.detail_product', id=product.id) }}"
+           class="btn btn-secondary w-100 mt-2">
+            Скасувати
+        </a>
+
+    </form>
+
+</div>
+
+{% endblock %}
