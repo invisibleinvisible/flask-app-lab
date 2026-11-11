@@ -193,3 +193,37 @@ def edit_product(id):
         product=product
     )
 
+
+@products_bp.route("/<int:id>/delete", methods=["POST"])
+def delete_product(id):
+    product = products_table.get(Query().id == id)
+
+    if product is None:
+        abort(404)
+
+    try:
+        # Видаляємо товар із TinyDB
+        products_table.remove(doc_ids=[product.doc_id])
+
+        # Видаляємо зображення товару, якщо воно є
+        image = product.get("image")
+
+        if image:
+            image_file = UPLOAD_FOLDER.parent / image
+
+            if image_file.exists():
+                image_file.unlink()
+
+        flash(
+            f"Товар «{product['name']}» успішно видалено!",
+            "success"
+        )
+
+    except Exception:
+        current_app.logger.exception(
+            "Помилка видалення товару"
+        )
+
+        flash("Не вдалося видалити товар.", "danger")
+
+    return redirect(url_for("products.products_list"))

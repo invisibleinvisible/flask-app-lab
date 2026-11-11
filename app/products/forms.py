@@ -18,6 +18,7 @@ from wtforms.validators import (
 from flask_wtf.file import FileAllowed, FileSize
 
 
+
 class ProductForm(FlaskForm):
 
     name = StringField(
