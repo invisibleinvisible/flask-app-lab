@@ -1,0 +1,81 @@
+
+{% extends "base.html" %}
+{% from "macros.html" import render_field %}
+
+{% block title %}Контакти{% endblock %}
+
+{% block content %}
+
+<header class="page-header text-center mb-5">
+    <h1 class="display-5 fw-bold">Контакти</h1>
+    <p class="lead">
+        Буду радий відповісти на твої запитання.
+    </p>
+</header>
+
+<div class="row g-4">
+
+    <section class="col-lg-5">
+        <div class="contact-card h-100">
+            <h2>Зв'язатися зі мною</h2>
+
+            <p>
+                <strong>Email:</strong>
+                <a href="mailto:example@gmail.com">
+                    example@mail.com
+                </a>
+            </p>
+
+            <p>
+                <strong>Телефон:</strong>
+                <a href="tel:+380123456789">
+                    0123456789
+                </a>
+            </p>
+
+            <p>
+                <strong>Місто:</strong> Івано-Франківськ
+            </p>
+
+            <p>
+                <strong>GitHub:</strong>
+                <a href="https://github.com/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Мій профіль GitHub
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <section class="col-lg-7">
+        <div class="contact-card">
+
+            <h2>Написати повідомлення</h2>
+
+            <form method="POST" action="{{ url_for('contacts') }}">
+
+    {{ form.hidden_tag() }}
+
+    {{ render_field(form.name, placeholder="Введіть ім'я") }}
+
+    {{ render_field(form.email, placeholder="name@example.com") }}
+
+    {{ render_field(form.phone, placeholder="+380XXXXXXXXX") }}
+
+    {{ render_field(form.subject) }}
+
+    {{ render_field(form.message, placeholder="Ваше повідомлення...") }}
+
+    <button type="submit" class="btn btn-primary w-100">
+        Надіслати повідомлення
+    </button>
+
+</form>
+
+        </div>
+    </section>
+
+</div>
+
+{% endblock %}
