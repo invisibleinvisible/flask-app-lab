@@ -1,1 +1,1 @@
-{}
+{"products": {"1": {"id": 1, "name": "Samsung Galaxy", "content": "\u0421\u043c\u0430\u0440\u0442\u0444\u043e\u043d \u0437 \u044f\u043a\u0456\u0441\u043d\u043e\u044e \u043a\u0430\u043c\u0435\u0440\u043e\u044e\r\n", "price": "12500.00", "category": "phones", "quantity": 10, "image": null, "created_at": "2026-11-11T21:23:17"}, "2": {"id": 2, "name": "iPhone 1", "content": "glowies honeypot", "price": "120000.00", "category": "phones", "quantity": 1, "image": null, "created_at": "2026-11-11T21:33:25"}}}
